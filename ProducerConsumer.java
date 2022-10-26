@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ProducerConsumer {
+
     public static void main(String[] args) {
 
         int n = 15;
