@@ -68,7 +68,9 @@ public class ProducerConsumer {
         @Override
         public void run() {
             try {
+
                 while (count <= n) produceCount(new FizzBuzzObj(count++, false, false));
+                System.exit(0);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage() + "by "+getName());
             }
@@ -77,8 +79,9 @@ public class ProducerConsumer {
         private synchronized void produceCount(FizzBuzzObj fizzBuzzObj) throws InterruptedException {
             q.offer(fizzBuzzObj);
 //            System.out.println("Count produced");
-            wait();
             notify();
+            wait();
+
         }
 
         public synchronized FizzBuzzObj consumeFizz() throws InterruptedException {
@@ -119,8 +122,8 @@ public class ProducerConsumer {
         private synchronized void produceBuzz(FizzBuzzObj fizzBuzzObj) throws InterruptedException {
             q.offer(fizzBuzzObj);
 //            System.out.println("Fizz produced");
-            wait();
             notify();
+            wait();
         }
 
 
@@ -159,8 +162,9 @@ public class ProducerConsumer {
         private synchronized void produceFizzBuzz (FizzBuzzObj fizzBuzzObj) throws InterruptedException {
             q.offer(fizzBuzzObj);
 //            System.out.println("Buzz produced");
-            wait();
             notify();
+            wait();
+
         }
 
         private synchronized FizzBuzzObj consumeFizzBuzz () throws InterruptedException {
@@ -205,4 +209,5 @@ public class ProducerConsumer {
             notify();
         }
     }
+
 }
